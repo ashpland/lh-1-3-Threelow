@@ -45,11 +45,13 @@
     return outputString;
 }
 
--(void)showDice{
+-(void)showDice
+{
     NSLog(@"\n%@\n", self);
 }
 
--(void)chooseDie{
+-(void)chooseDie
+{
     NSLog(@"\n%@\n 1   2   3   4   5\n", self);
     NSString *dieChoiceResponse = [InputCollector inputForPrompt:@"Choose a die"];
     int dieNumber = (int)[dieChoiceResponse integerValue]-1;
@@ -72,12 +74,18 @@
     }
 }
 
--(void)holdDie:(int)dieNumber{
+-(void)holdDie:(int)dieNumber
+{
     if ([self.heldDice[dieNumber] isEqual:@false]) {
         self.heldDice[dieNumber] = @true;
     } else {
         self.heldDice[dieNumber] = @false;
     }
+}
+
+-(void)resetDice
+{
+    self.heldDice = [[NSMutableArray alloc] initWithArray:@[@false,@false,@false,@false,@false]];
 }
 
 

@@ -26,7 +26,8 @@ int main(int argc, const char * argv[]) {
         [[MenuManager alloc]
          initWithMenuItems:@[@"Quit",
                              @"Roll",
-                             @"Hold"]];
+                             @"Hold",
+                             @"Reset"]];
         
         while (doContinue) {
             
@@ -52,6 +53,12 @@ int main(int argc, const char * argv[]) {
                 // hold
                 case 2:{
                     [gameController chooseDie];
+                    break;
+                }
+                    
+                // reset
+                case 3:{
+                    [gameController resetDice];
                     break;
                 }
                     

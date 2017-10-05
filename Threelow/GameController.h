@@ -18,5 +18,6 @@
 -(void)chooseDie;
 -(void)rollDice;
 -(void)holdDie:(int)dieNumber;
+-(void)resetDice;
 
 @end
