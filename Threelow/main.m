@@ -23,35 +23,37 @@ int main(int argc, const char * argv[]) {
         MenuManager *menuManager =
         [[MenuManager alloc]
          initWithMenuItems:@[@"Quit",
-                             @"Test"]];
+                             @"Roll"]];
         
-        Dice *testDie1 = [Dice new];
-        Dice *testDie2 = [Dice new];
-        Dice *testDie3 = [Dice new];
-        Dice *testDie4 = [Dice new];
-        Dice *testDie5 = [Dice new];
+        Dice *die1 = [Dice new];
+        Dice *die2 = [Dice new];
+        Dice *die3 = [Dice new];
+        Dice *die4 = [Dice new];
+        Dice *die5 = [Dice new];
+        
+        NSArray *diceStore = [[NSArray alloc] initWithObjects:die1, die2, die3, die4, die5, nil];
         
         while (doContinue) {
-            
+            NSLog(@"%@ %@ %@ %@ %@\n", die1, die2, die3, die4, die5);
+
             int choice = [menuManager getMenuChoice];
             
             switch (choice) {
-                    // quit
+                
+                // quit
                 case 0:{
                     NSLog(@"\nThanks for playing!");
                     doContinue = false;
                     break;
                 }
-                    
+                
+                // roll
                 case 1:{
                     
-                    
-                    NSLog(@"%@ %@ %@ %@ %@\n", testDie1, testDie2, testDie3, testDie4, testDie5);
-                    
-                    
-                    
-                    
-                    
+                    for (Dice *die in diceStore){
+                        [die rollDie];
+                    }
+                   
                     break;
                 }
                     
