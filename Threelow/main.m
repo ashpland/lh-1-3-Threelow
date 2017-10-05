@@ -25,11 +25,12 @@ int main(int argc, const char * argv[]) {
         MenuManager *menuManager =
         [[MenuManager alloc]
          initWithMenuItems:@[@"Quit",
-                             @"Roll"]];
+                             @"Roll",
+                             @"Hold"]];
         
         while (doContinue) {
             
-            NSLog(@"\n%@\n", gameController);
+            [gameController showDice];
 
             int choice = [menuManager getMenuChoice];
             
@@ -44,11 +45,13 @@ int main(int argc, const char * argv[]) {
                 
                 // roll
                 case 1:{
+                    [gameController rollDice];
+                    break;
+                }
                     
-                    for (Dice *die in gameController.diceStore){
-                        [die rollDie];
-                    }
-                   
+                // hold
+                case 2:{
+                    [gameController chooseDie];
                     break;
                 }
                     
