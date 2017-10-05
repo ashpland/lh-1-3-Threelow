@@ -19,5 +19,6 @@
 -(void)rollDice;
 -(void)holdDie:(int)dieNumber;
 -(void)resetDice;
+-(int)calculateScore;
 
 @end

@@ -42,6 +42,9 @@
         [outputString appendString:outputDie];
     }
     
+    NSString *scoreOutput = [[NSString alloc] initWithFormat:@"   Total: %d", [self calculateScore]];
+    [outputString appendString:scoreOutput];
+
     return outputString;
 }
 
@@ -86,6 +89,15 @@
 -(void)resetDice
 {
     self.heldDice = [[NSMutableArray alloc] initWithArray:@[@false,@false,@false,@false,@false]];
+}
+
+-(int)calculateScore
+{
+    int score = 0;
+    for(Dice *die in self.diceStore){
+        score = score + die.currentValue;
+    }
+    return score;
 }
 
 
