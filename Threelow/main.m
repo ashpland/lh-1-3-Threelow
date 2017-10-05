@@ -8,7 +8,11 @@
 
 #import <Foundation/Foundation.h>
 #import "MenuManager.h"
+#import "Dice.h"
 #define NSLog(FORMAT, ...) printf("%s\n", [[NSString stringWithFormat:FORMAT, ##__VA_ARGS__] UTF8String]);
+
+
+
 
 
 int main(int argc, const char * argv[]) {
@@ -19,8 +23,13 @@ int main(int argc, const char * argv[]) {
         MenuManager *menuManager =
         [[MenuManager alloc]
          initWithMenuItems:@[@"Quit",
-                             @"New",
-                             @"List"]];
+                             @"Test"]];
+        
+        Dice *testDie1 = [Dice new];
+        Dice *testDie2 = [Dice new];
+        Dice *testDie3 = [Dice new];
+        Dice *testDie4 = [Dice new];
+        Dice *testDie5 = [Dice new];
         
         while (doContinue) {
             
@@ -28,10 +37,23 @@ int main(int argc, const char * argv[]) {
             
             switch (choice) {
                     // quit
-                case 0:
-                    NSLog(@"Adieu!");
+                case 0:{
+                    NSLog(@"\nThanks for playing!");
                     doContinue = false;
                     break;
+                }
+                    
+                case 1:{
+                    
+                    
+                    NSLog(@"%@ %@ %@ %@ %@\n", testDie1, testDie2, testDie3, testDie4, testDie5);
+                    
+                    
+                    
+                    
+                    
+                    break;
+                }
                     
                 default:
                     NSLog(@"That's not an option");

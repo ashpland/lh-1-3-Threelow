@@ -12,7 +12,7 @@
 
 -(void)rollDie
 {
-    self.currentValue = arc4random_uniform(6);
+    self.currentValue = arc4random_uniform(6)+1;
 }
 
 - (instancetype)init
@@ -22,6 +22,33 @@
         [self rollDie];
     }
     return self;
+}
+
+- (NSString *)description
+{
+    switch (self.currentValue) {
+        case 1:
+            return @"⚀";
+            break;
+        case 2:
+            return @"⚁";
+            break;
+        case 3:
+            return @"⚂";
+            break;
+        case 4:
+            return @"⚃";
+            break;
+        case 5:
+            return @"⚄";
+            break;
+        case 6:
+            return @"⚅";
+            break;
+        default:
+            return @"";
+            break;
+    }
 }
 
 @end
