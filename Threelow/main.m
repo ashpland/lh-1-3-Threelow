@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import "MenuManager.h"
-#import "Dice.h"
+#import "GameController.h"
 #define NSLog(FORMAT, ...) printf("%s\n", [[NSString stringWithFormat:FORMAT, ##__VA_ARGS__] UTF8String]);
 
 
@@ -20,21 +20,16 @@ int main(int argc, const char * argv[]) {
                 
         bool doContinue = true;
         
+        GameController *gameController = [GameController new];
+        
         MenuManager *menuManager =
         [[MenuManager alloc]
          initWithMenuItems:@[@"Quit",
                              @"Roll"]];
         
-        Dice *die1 = [Dice new];
-        Dice *die2 = [Dice new];
-        Dice *die3 = [Dice new];
-        Dice *die4 = [Dice new];
-        Dice *die5 = [Dice new];
-        
-        NSArray *diceStore = [[NSArray alloc] initWithObjects:die1, die2, die3, die4, die5, nil];
-        
         while (doContinue) {
-            NSLog(@"%@ %@ %@ %@ %@\n", die1, die2, die3, die4, die5);
+            
+            NSLog(@"\n%@\n", gameController);
 
             int choice = [menuManager getMenuChoice];
             
@@ -50,7 +45,7 @@ int main(int argc, const char * argv[]) {
                 // roll
                 case 1:{
                     
-                    for (Dice *die in diceStore){
+                    for (Dice *die in gameController.diceStore){
                         [die rollDie];
                     }
                    
