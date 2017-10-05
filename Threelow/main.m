@@ -30,7 +30,7 @@ int main(int argc, const char * argv[]) {
                              @"Reset"]];
         
         while (doContinue) {
-            
+            [gameController showHead];
             [gameController showDice];
 
             int choice = [menuManager getMenuChoice];

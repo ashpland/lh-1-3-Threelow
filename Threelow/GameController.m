@@ -25,11 +25,20 @@
         
         _diceStore = [[NSArray alloc] initWithObjects:die1, die2, die3, die4, die5, nil];
         _heldDice = [[NSMutableArray alloc] initWithArray:@[@false,@false,@false,@false,@false]];
+        _rolls = 1;
     }
     return self;
 }
 
-- (NSString *)description
+//NSString *scoreOutput = [[NSString alloc] initWithFormat:@"   Total: %d", [self calculateScore]];
+
+-(void)showHead{
+    NSLog(@"___________________");
+    NSLog(@" Roll: %d Total: %d", self.rolls, [self calculateScore]);
+}
+
+
+-(void)showDice
 {
     NSMutableString *outputString = [NSMutableString new];
     for (int i = 0; i <= 4; i++) {
@@ -42,20 +51,13 @@
         [outputString appendString:outputDie];
     }
     
-    NSString *scoreOutput = [[NSString alloc] initWithFormat:@"   Total: %d", [self calculateScore]];
-    [outputString appendString:scoreOutput];
-
-    return outputString;
-}
-
--(void)showDice
-{
-    NSLog(@"\n%@\n", self);
+    NSLog(@"\n%@", outputString);
 }
 
 -(void)chooseDie
 {
-    NSLog(@"\n%@\n 1   2   3   4   5\n", self);
+    [self showDice];
+    NSLog(@" 1   2   3   4   5\n");
     NSString *dieChoiceResponse = [InputCollector inputForPrompt:@"Choose a die"];
     int dieNumber = (int)[dieChoiceResponse integerValue]-1;
     if (0 <= dieNumber && dieNumber <= 4) {
@@ -75,6 +77,7 @@
             [self.diceStore[i] rollDie];
         }
     }
+    self.rolls = self.rolls + 1;
 }
 
 -(void)holdDie:(int)dieNumber
@@ -89,6 +92,8 @@
 -(void)resetDice
 {
     self.heldDice = [[NSMutableArray alloc] initWithArray:@[@false,@false,@false,@false,@false]];
+    self.rolls = 0;
+    [self rollDice];
 }
 
 -(int)calculateScore

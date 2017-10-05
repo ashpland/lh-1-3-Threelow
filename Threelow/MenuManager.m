@@ -37,7 +37,7 @@
 
 - (NSString *)description
 {
-    NSMutableString *menuOutput = [NSMutableString stringWithString:@"Menu:\n"];
+    NSMutableString *menuOutput = [NSMutableString stringWithString:@"\nMenu:\n"];
     
     for (NSString *menuOption in self.menuItems){
         NSString *menuLine = [NSString stringWithFormat:@"- %@\n", menuOption];

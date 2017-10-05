@@ -13,7 +13,9 @@
 
 @property (nonatomic)NSArray *diceStore;
 @property (nonatomic)NSMutableArray *heldDice;
+@property (nonatomic)int rolls;
 
+-(void)showHead;
 -(void)showDice;
 -(void)chooseDie;
 -(void)rollDice;
